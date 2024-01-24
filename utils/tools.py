@@ -1,6 +1,15 @@
 import os
 import hostlist #pip install python-hostlist
- 
+
+
+'''
+
+tools :
+    Slurm environment variables
+
+
+
+'''
 
 # Slurm environement variables
 class Slurm():
@@ -33,19 +42,13 @@ class Slurm():
     def getGpuId():
         return os.environ['SLURM_STEP_GPUS'].split(",")
 
-    
-def setMasterPortAddr():
+    @staticmethod
+    def setMasterPortAddr():
+            
+        hostnames = Slurm.getHostnames()
+        gpu_ids = Slurm.getGpuId()
         
-    hostnames = Slurm.getHostnames()
-    gpu_ids = Slurm.getGpuId()
-    
-    os.environ['MASTER_ADDR'] = hostnames[0]
-    os.environ['MASTER_PORT'] = str(12345 + int(min(gpu_ids)))
+        os.environ['MASTER_ADDR'] = hostnames[0]
+        os.environ['MASTER_PORT'] = str(12345 + int(min(gpu_ids)))
 
 
-
-
-
-
-
-Slurm.get_()
