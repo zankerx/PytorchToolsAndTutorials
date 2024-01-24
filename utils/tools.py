@@ -34,12 +34,12 @@ class Slurm():
         return os.environ['SLURM_STEP_GPUS'].split(",")
 
     
-def setMaster():
+def setMasterPortAddr():
         
-    hostnames = getHostnames()
-    gpu_ids = getGpuId()
-        
-    os.environ['MASTER_ADDR'] = 'localhost' #hostnames[0]
+    hostnames = Slurm.getHostnames()
+    gpu_ids = Slurm.getGpuId()
+    
+    os.environ['MASTER_ADDR'] = hostnames[0]
     os.environ['MASTER_PORT'] = str(12345 + int(min(gpu_ids)))
 
 
