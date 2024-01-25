@@ -3,7 +3,6 @@ import hostlist #pip install python-hostlist
 
 
 '''
-
 tools :
     Slurm environment variables
 
