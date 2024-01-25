@@ -8,3 +8,5 @@ Features:
 - TODO : How to train on multiples nodes/gpu
 - TODO : repro : Clean code I-JEPA/SimSiam
 - TODO : models : add layers and basics models (transformers, etc.)
+- TODO : Patch masking with transformers (layer and collate)
+- TODO : Folder Dataset
