@@ -11,7 +11,7 @@ Scheduler
 def get_params_nowd1d(model):
     
     # no wd on bias/1D params
-    # 1 groups : wd, no wd
+    # 2 groups : wd, no wd
     # if token in parameter name : no wd.
 
     param_groups =  [
@@ -31,6 +31,7 @@ def get_params_nowd1d(model):
 
 class StepWarmupCosinScheduler():
 
+    #Work with epochs instead of steps
     def __init__(self, warmup_steps, total_steps, start_lr, max_lr, final_lr):
         
         self.warmup_steps = warmup_steps
@@ -42,8 +43,6 @@ class StepWarmupCosinScheduler():
 
     def adjust_lr(self, optimizer, step):
 
-        #compute lr
-
         #warmup
         if step < self.warmup_steps:
             lr = self.start_lr + (self.max_lr - self.start_lr) * step / self.warmup_steps
@@ -52,6 +51,5 @@ class StepWarmupCosinScheduler():
         else:
             lr = self.final_lr + 0.5 * (self.max_lr - self.final_lr) * (1.0 + math.cos(math.pi * (self.steps - self.warmup_steps) / (self.total_steps - self.warmup_steps)))
         
-
         for param_group in optimizer.param_groups:    
             param_group["lr"] = lr
