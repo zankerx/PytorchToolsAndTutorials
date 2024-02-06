@@ -1,5 +1,8 @@
 # SimSiam reproduction
 
+![plot](./acc.png)
+![plot](./loss.png)
+
 ## hparams
 
 | Hparam    |  value | 
@@ -19,5 +22,4 @@
 CIFAR10 resnet18 version (3x3 first conv)
 zero init BN residual
 
-![plot](./acc.png)
-![plot](./loss.png)
+
