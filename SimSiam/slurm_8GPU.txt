@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#SBATCH --job-name=train_pytorch_VIT
+#SBATCH --output log/test_pytorch.o%J
+#SBATCH --error log/test_pytorch.e%J
+
+
+
+#SBATCH --partition gpu_all
+
+
+#SBATCH --nodes=1                                   
+#SBATCH --mem 0                             
+#SBATCH --ntasks-per-node=8                               
+#SBATCH --gres=gpu:8                            
+#SBATCH --cpus-per-task=8                          
+#SBATCH --time=12:00:00                             
+
+#SBATCH --mail-type ALL
+#SBATCH --mail-user XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+module purge
+module load aidl/pytorch/2.0.0-cuda11.7
+
+srun python3 -u main.py
+
