@@ -6,6 +6,9 @@ Features:
 - Slurm environement
 - SimSiam Reproduction 87.336% acc CIFAR10 KNN, linear probing asap
 
+![plot](./SimSiam/acc.png)
+![plot](./SimSiam/loss.png)
+
 - TODO : Step/epoch scheduler : cosin + warmup no wd on 1d params  
 - TODO : How to train on multiples nodes/gpu
 - TODO : repro : Clean code I-JEPA
